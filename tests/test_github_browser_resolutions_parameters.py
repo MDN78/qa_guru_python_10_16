@@ -3,7 +3,7 @@ from selene import browser
 from resources.resolutions import *
 
 
-@pytest.mark.parametrize('desktop_browser', [FULL_HD], indirect=True)
+@pytest.mark.parametrize('desktop_browser', [HD], indirect=True)
 def test_github_desktop(desktop_browser):
     browser.open('/')
     browser.element('.HeaderMenu-link--sign-in').click()
