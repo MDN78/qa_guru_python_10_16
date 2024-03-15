@@ -59,6 +59,24 @@ pytestmark = pytest.mark.skip(reason="Когда нужно пропустить
 @pytest.mark.xfail()
 @pytest.mark.xfail(reason="", strict=True, raises="AssertionError")
 ```
+
+Свои марки надо регистрировать в файле `pytest.ini`:  
+```python
+[pytest]
+markers =
+    slow: marks tests as slow (deselect with '-m "not slow"'),
+    fast: marks tests as fast
+
+```
+Если используется конфигурационный общий файл для Python - `pyproject.toml` :  
+```python
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "serial",
+]
+```
+
 ```python
 Вот так лучше:
 ```python
