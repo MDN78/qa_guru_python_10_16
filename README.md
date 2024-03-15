@@ -43,9 +43,29 @@ pytest --setup-plan # тесты не запускает, но выводит п
 @pytest.mark.skip()
 @pytest.mark.skip(reason="Этот тест еще не завершен")
 ```
+skipif - пропуск по условию. Лучше всего описывать в виде переменной принимает True/False  
+```python 
+is_linux = True
+@pytest.mark.skipif(True)
+@pytest.mark.skipif(is_linux)
+@pytest.mark.skipif(is_linux, reason='Тест пропущен так как условие is_skip = True')
+```
+```python
+pytestmark = pytest.mark.skip(reason="Когда нужно пропустить весь файл")
+```
 
 Марка `xfail` позволяет указать, что тест заведомо может не работать. При этом тест запустится. Причину также указывают с помощью аргумента reason, а аргумент `strict`  заставляет тест упасть, если ошибка не произошла сама. Аргумент `raises` заставляет тест отработать только в том случае, если в тесте есть какой-то конкретный тип ошибки;  
 ```python
 @pytest.mark.xfail()
 @pytest.mark.xfail(reason="", strict=True, raises="AssertionError")
+```
+```python
+Вот так лучше:
+```python
+assert 2 == 2
+try:
+    assert 2 == 2 
+except AssertionError:
+    pytest.xfail("TASK-1234 Test is xfail because is flaky")
+assert 3 == 3
 ```
