@@ -76,14 +76,15 @@ markers = [
     "serial",
 ]
 ```
+Вот так лучше использовать марку xfail  - внутри самого теста, на ассерте
+```python
+def test_something():
+  a = 2
+  b = 2
 
-```python
-Вот так лучше:
-```python
-assert 2 == 2
-try:
-    assert 2 == 2 
-except AssertionError:
-    pytest.xfail("TASK-1234 Test is xfail because is flaky")
-assert 3 == 3
+  try:
+      assert a == b 
+  except AssertionError:
+      pytest.xfail("TASK-1234 Test is xfail because is flaky")
+
 ```
