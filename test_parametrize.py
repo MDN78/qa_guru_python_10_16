@@ -17,6 +17,11 @@ def test_with_matrix_param(browser, test_role):
     pass
 
 
+'''
+Пример работы с параметром - когда нам надо среди параметров запускать тест с конкретным одним и например ждем что он может упасть
+Тогда мы добавляем доп марку - pytest.param() в которой можем прописать xfail
+'''
+
 @pytest.mark.parametrize("browser",
                          [
                              pytest.param("Chrome", id="Chrome"),
