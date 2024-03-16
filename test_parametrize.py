@@ -68,6 +68,9 @@ def test_with_parametrized_fixture(browser):
 def test_with_indirect_parametrization(browser):
     pass
 
+'''
+Такая конструкция позволяет упростить наименование параметризации - вначале в файле задаем переменную crome_only 
+которой и  присвоим уже наш ожидаемый параметр а далее на сам тест навесим именно эту переменную'''
 
 chrome_only = pytest.mark.parametrize("browser", ["Chrome"], indirect=True)
 
