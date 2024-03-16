@@ -79,11 +79,8 @@ pytestmark = pytest.mark.skip(reason="Когда нужно пропустить
 ```python
 [pytest]
 markers =
-slow: marks
-tests as slow(deselect
-with '-m "not slow"'),
-fast: marks
-tests as fast
+  slow: marks tests as slow(deselect with '-m "not slow"'),
+  fast: marks tests as fast
 
 ```
 
@@ -120,4 +117,11 @@ def test_something():
                          )
 def test_with_param(browser, version):
     assert browser in ["Chrome", "Firefox", "Safari"]
+```
+Аргумент `indirect=` позволяет переопределить параметры у фикстуры - в примере фикстуру `browser` мы задали
+что будет запускать именно chrome  
+```python
+@pytest.mark.parametrize("browser", ["Chrome"], indirect=True)
+def test_with_indirect_parametrization(browser):
+    pass
 ```
