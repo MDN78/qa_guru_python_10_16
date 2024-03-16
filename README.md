@@ -108,6 +108,12 @@ def test_something():
 
 ```
 ## Параметризация  
+[Documentation](https://docs.pytest.org/en/7.1.x/how-to/parametrize.html)  
+[structure](https://github.com/pytest-dev/pytest/issues/3261#issuecomment-369740536)  
+[How-to](https://pytest-xdist.readthedocs.io/en/latest/how-to.html)  
+[scope sessions](https://pytest-xdist.readthedocs.io/en/latest/how-to.html#making-session-scoped-fixtures-execute-only-once)  
+[Hooks](https://docs.pytest.org/en/7.2.x/reference/reference.html#hooks)  
+
 Можно добавлять свои параметры - тогда тест будет использовать данные из представленных данных.
 Если данные трудно читаемые можно использовать аргумент `ids=` который позволяет выводить в более читаемом виде  
 ```python
