@@ -80,6 +80,14 @@ def test_chrome_extension(browser):
     pass
 
 
+
+'''
+Функции для отображения пользователей. Чтобы получить данные польтзователя, мы сделали доп функцию, прописали там как должна выводиться инфа о
+пользователе и далее эту передаем в параметризацию
+аргумент ids=repr - тк Юзер у нас  - dataclass - для егопоказа есть эта функция - те не надо будет передавать нашу созданную функцию
+ для этого мы в dataclass создадим нашу функцию которая будет определять какие данные пользователя выводить - 
+ __repr__() '''
+
 @dataclass
 class User:
     id: int
@@ -100,5 +108,12 @@ def show_user(user):
 
 
 @pytest.mark.parametrize("user", [user1, user2], ids=repr)
+def test_users(user):
+    pass
+
+
+''' как вариант можем напрямую передавать нашу созданную функцию'''
+
+@pytest.mark.parametrize("user", [user1, user2], ids=show_user)
 def test_users(user):
     pass
